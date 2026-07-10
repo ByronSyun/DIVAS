@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Data Integration via Analysis of Subspaces">
@@ -69,7 +69,7 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>DIVAS (Data Integration via Analysis of Subspaces) is an R package for multi-modal data integration. Based on the DIVAS methodology proposed by Prothero et al. (2024), it provides tools for signal extraction, noise estimation, and joint structure identification from high-dimensional datasets, useful for multi-omics and other complex data types.</p>
+<p>We provide an R implementation of DIVAS (Prothero et al., 2024), a statistical method for multi-modal data integration. Via statistical analysis of subspaces, DIVAS identifies joint, partially shared, and individual variation across multiple data blocks in a completely data-driven way. In addition to translating the original MATLAB implementation into an accessible R package, we also provide visualization tools and worked examples for exploring DIVAS results in practice.</p>
 <p><strong>Documentation website</strong>: <a href="https://byronsyun.github.io/DIVAS_Develop/">https://byronsyun.github.io/DIVAS_Develop/</a></p>
 </div>
 <div class="section level2">
@@ -78,14 +78,17 @@
 <div class="section level3">
 <h3 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h3>
-<p>The DIVAS package requires a modern version of the <code>CVXR</code> package to ensure compatibility with underlying solvers like SCS. We strongly recommend installing the latest stable version from CRAN.</p>
+<p>The DIVAS package requires the current 1.x line of the <code>CVXR</code> package for compatibility with the SCS solver interface. The package has been tested with <code>CVXR</code> 1.0-15. In <code>DESCRIPTION</code>, DIVAS also declares <code>CVXR (&gt;= 1.0-15)</code> as a package dependency.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install devtools (if not already installed)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Install the latest version of CVXR from CRAN</span></span>
-<span><span class="co"># This is critical to avoid issues with solver status recognition (e.g., for SCS)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CVXR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Install CVXR 1.x. DIVAS has been tested with CVXR 1.0-15.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_version</span><span class="op">(</span><span class="st">"CVXR"</span>, version <span class="op">=</span> <span class="st">"1.0-15"</span>, repos <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Alternatively, install the latest CRAN release if it is compatible with your R version.</span></span>
+<span><span class="co"># install.packages("CVXR")</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="installing-the-divas-package">Installing the DIVAS package<a class="anchor" aria-label="anchor" href="#installing-the-divas-package"></a>
@@ -93,7 +96,7 @@
 <p>You can install the development version of DIVAS from GitHub using <code>devtools</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install DIVAS package from the main branch on GitHub</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ByronSyun/DIVAS_Develop/pkg"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ByronSyun/DIVAS_Develop/pkg"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Or install from a local folder if you have cloned the repository</span></span>
 <span><span class="co"># devtools::install("path/to/DIVAS-main/pkg")</span></span></code></pre></div>
@@ -102,41 +105,30 @@
 <div class="section level2">
 <h2 id="usage-examples">Usage Examples<a class="anchor" aria-label="anchor" href="#usage-examples"></a>
 </h2>
-<p>The DIVAS package supports analysis of various data formats. Here are two examples using different data formats:</p>
-<div class="section level3">
-<h3 id="example-1-using-matlab-data">Example 1: Using MATLAB data<a class="anchor" aria-label="anchor" href="#example-1-using-matlab-data"></a>
-</h3>
+<p>The DIVAS package supports analysis of various data formats. Here is a simple example using the built-in toy MATLAB dataset:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load necessary libraries</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/HenrikBengtsson/R.matlab" class="external-link">R.matlab</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/HenrikBengtsson/R.matlab" class="external-link">R.matlab</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ByronSyun/DIVAS_Develop" class="external-link">DIVAS</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Construct the path to the data file within the package</span></span>
 <span><span class="va">data_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"toyDataThreeWay.mat"</span>, package <span class="op">=</span> <span class="st">"DIVAS"</span><span class="op">)</span></span>
-<span><span class="co"># Read MATLAB data</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/R.matlab/man/readMat.html" class="external-link">readMat</a></span><span class="op">(</span><span class="va">data_path</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Prepare data blocks</span></span>
 <span><span class="va">datablock</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  X1 <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">datablock</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>  X2 <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">datablock</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>  X3 <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">datablock</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Run DIVAS main function</span></span>
 <span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/DIVASmain.html">DIVASmain</a></span><span class="op">(</span><span class="va">datablock</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualize results</span></span>
 <span><span class="va">dataname</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"DataBlock_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">datablock</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/DJIVEAngleDiagnosticJP.html">DJIVEAngleDiagnosticJP</a></span><span class="op">(</span><span class="va">datablock</span>, <span class="va">dataname</span>, <span class="va">result</span>, <span class="fl">566</span>, <span class="st">"Demo"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">plots</span><span class="op">)</span></span></code></pre></div>
-<p>See the documentation website for more detailed examples and tutorials.</p>
-</div>
+<p>For more detailed tutorials, see the documentation website and linked case studies below.</p>
 </div>
 <div class="section level2">
 <h2 id="available-datasets">Available Datasets<a class="anchor" aria-label="anchor" href="#available-datasets"></a>
 </h2>
+<p>We provide the following examples to illustrate the use of DIVAS in different scenarios.</p>
 <table class="table">
 <colgroup>
 <col width="9%">
@@ -145,7 +137,7 @@
 <col width="3%">
 <col width="11%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Dataset</th>
 <th>Brief Description</th>
 <th>Vignette Link</th>
@@ -153,21 +145,21 @@
 <th>Primary Reference</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>toyDataThreeWay.mat</td>
 <td>Synthetic 3-block data with known joint structures</td>
 <td><a href="https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_Toy_Dataset_Example.html">Toy Dataset Example</a></td>
 <td>.mat</td>
 <td>Prothero et al. (2024)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>gnp_imputed.qs</td>
 <td>GNP economic time series data</td>
 <td><a href="https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_GNP_Dataset_Example.html">GNP Dataset Example</a></td>
 <td>.qs</td>
 <td>Stock &amp; Watson (2016)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>COVID-19 Multi-Omics</td>
 <td>6-block integration: scRNA-seq (4 cell types), proteomics, metabolomics from 114 COVID-19 patient samples</td>
 <td><a href="https://byronsyun.github.io/DIVAS_COVID19_CaseStudy/" class="external-link">COVID Case Study</a></td>
@@ -255,7 +247,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="DIVAS User Guide: Analysing the Toy Dataset">
@@ -62,7 +62,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>DIVAS User Guide: Analysing the Toy Dataset</h1>
                         <h4 data-toc-skip class="author">Yinuo Sun</h4>
             
-            <h4 data-toc-skip class="date">2026-02-04</h4>
+            <h4 data-toc-skip class="date">2026-07-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ByronSyun/DIVAS_Develop/blob/main/vignettes/DIVAS_User_Guide.Rmd" class="external-link"><code>vignettes/DIVAS_User_Guide.Rmd</code></a></small>
       <div class="d-none name"><code>DIVAS_User_Guide.Rmd</code></div>
@@ -80,7 +80,7 @@ variation patterns across multiple data blocks (modalities).</p>
 <p>First, ensure you have the <code>DIVAS</code> package and its
 dependencies installed. See the main <code>README.md</code> for
 installation instructions, especially regarding the required
-<code>CVXR</code> version (0.99-7).</p>
+<code>CVXR</code> 1.x line (tested with <code>CVXR</code> 1.0-15).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install if not have</span></span>
 <span><span class="co"># install.packages("devtools")</span></span>
@@ -91,8 +91,8 @@ installation instructions, especially regarding the required
 <span><span class="co"># Or install from local folder</span></span>
 <span><span class="co"># devtools::load_all("DIVAS-main")</span></span>
 <span></span>
-<span><span class="co"># Install the specified version of CVXR</span></span>
-<span><span class="co"># devtools::install_version("CVXR", version = "0.99-7", repos = "http://cran.us.r-project.org")</span></span>
+<span><span class="co"># Install a current 1.x CVXR release (example shown with 1.0-15)</span></span>
+<span><span class="co"># remotes::install_version("CVXR", version = "1.0-15", repos = "https://cloud.r-project.org")</span></span>
 <span></span>
 <span><span class="co"># For pkgdown, libraries are generally not needed here if the package is loaded,</span></span>
 <span><span class="co"># # library(R.matlab)</span></span>
@@ -139,14 +139,21 @@ element of the list is one data block (matrix).</p>
 <span><span class="co"># print(paste("Block 1 dimensions:", dim(datablock_list[[1]])))</span></span>
 <span><span class="co"># print(paste("Block 2 dimensions:", dim(datablock_list[[2]])))</span></span>
 <span><span class="co"># print(paste("Block 3 dimensions:", dim(datablock_list[[3]])))</span></span></code></pre></div>
-<p>Now, <code>datablock_list</code> is ready for DIVAS analysis. It
-contains three matrices.</p>
+<p>Now, <code>datablock_list</code> is ready for DIVAS analysis. The
+required DIVAS input is a named list of aligned feature-by-sample
+matrices; each matrix should have features in rows, samples in columns,
+and the same sample order across blocks. In application studies, data
+blocks may be molecular modalities or other matched biological views,
+such as cell-type-specific pseudo-bulk expression matrices.</p>
 </div>
 <div class="section level2">
 <h2 id="running-divas-analysis">Running DIVAS Analysis<a class="anchor" aria-label="anchor" href="#running-divas-analysis"></a>
 </h2>
 <p>The core function is <code>DIVASmain</code>. We pass our prepared
-list of data blocks to it.</p>
+list of data blocks to it. Preparing aligned data blocks and running
+<code><a href="../reference/DIVASmain.html">DIVASmain()</a></code> are the required steps; dataset-specific
+preprocessing choices such as cell annotation, pseudo-bulking or feature
+filtering depend on the study design.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Run the main DIVAS function</span></span>
 <span><span class="co"># Use default parameters for this example</span></span>
@@ -317,16 +324,21 @@ $keyIdxMap</code></pre>
 <div class="section level2">
 <h2 id="interpreting-the-visualization-results">Interpreting the Visualization Results<a class="anchor" aria-label="anchor" href="#interpreting-the-visualization-results"></a>
 </h2>
-<p>The DIVAS analysis generates two main diagnostic plots that provide
-critical insights into the identified structures:</p>
+<p>The DIVAS analysis generates standardized diagnostic plots that
+provide critical insights into the identified structures. These plots
+are created by the package built-in function
+<code><a href="../reference/DJIVEAngleDiagnosticJP.html">DJIVEAngleDiagnosticJP()</a></code>, which returns editable
+<code>ggplot2</code> objects.</p>
 <div class="section level3">
-<h3 id="joint-structure-loadings-diagnostics">1. Joint Structure Loadings Diagnostics<a class="anchor" aria-label="anchor" href="#joint-structure-loadings-diagnostics"></a>
+<h3 id="rank-decomposition-diagnostics">1. Rank Decomposition Diagnostics<a class="anchor" aria-label="anchor" href="#rank-decomposition-diagnostics"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># These plots are generated by the DJIVEAngleDiagnosticJP function</span></span>
 <span><span class="co"># plots &lt;- DJIVEAngleDiagnosticJP(datablock_list, dataname, divas_results, </span></span>
-<span><span class="co">#                               randseed = 566, titlestr = "Demo")</span></span></code></pre></div>
-<p>This plot shows:</p>
+<span><span class="co">#                               randseed = 566, titlestr = "Demo")</span></span>
+<span><span class="co"># plots$rank</span></span></code></pre></div>
+<p>The rank decomposition plot is derived from the fitted DIVAS
+decomposition, not from the loading extraction commands. It shows:</p>
 <ul>
 <li>
 <strong>Rows</strong>: Each data block (DataBlock_1, DataBlock_2,
@@ -374,6 +386,15 @@ to each structure</li>
 </ul>
 <p>Smaller angles in both plots indicate that the identified structures
 are statistically significant and distinct from random variation.</p>
+</div>
+<div class="section level3">
+<h3 id="joint-structure-loading-diagnostics">3. Joint Structure Loading Diagnostics<a class="anchor" aria-label="anchor" href="#joint-structure-loading-diagnostics"></a>
+</h3>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># print(plots$loading)</span></span></code></pre></div>
+<p>This plot shows analogous diagnostics in the feature/loading space.
+Users can print the returned plots directly or further modify them with
+standard <code>ggplot2</code> layers.</p>
 <p>These visualizations provide a comprehensive view of how information
 is shared across data blocks, helping researchers identify which
 structures are most important and reliable for interpretation.</p>
@@ -385,7 +406,7 @@ object in detail:</p>
 </h3>
 <p>The <code>jointBasisMap</code> is a list containing the estimated
 basis vectors (scores) for each identified structure:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># names(divas_results$jointBasisMap)</span></span>
 <span><span class="co"># dim(divas_results$jointBasisMap[["7"]])</span></span></code></pre></div>
 </div>
@@ -394,7 +415,7 @@ basis vectors (scores) for each identified structure:</p>
 </h3>
 <p>The <code>matLoadings</code> component provides the corresponding
 loadings for each structure:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># str(divas_results$matLoadings, max.level = 2)</span></span></code></pre></div>
 <p>This nested list structure contains loadings for each block and each
 structure. The loadings show how the joint and individual patterns are
@@ -437,14 +458,14 @@ identical sample IDs), making this a perfect example for multi-modal
 data integration with DIVAS. Each data type (RNA, protein, miRNA)
 represents a different “view” of the same biological samples.</p>
 <p>To run this example, you’ll need the <code>qs</code> package:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("qs")</span></span>
 <span><span class="co"># library(qs)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="loading-and-analyzing-the-gnp-dataset">Loading and Analyzing the GNP Dataset<a class="anchor" aria-label="anchor" href="#loading-and-analyzing-the-gnp-dataset"></a>
 </h3>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># gnp &lt;- qread("gnp_imputed.qs")</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># datablock &lt;- gnp$datablock</span></span>
@@ -452,7 +473,10 @@ represents a different “view” of the same biological samples.</p>
 <span><span class="co"># </span></span>
 <span><span class="co"># # Create names for the data blocks</span></span>
 <span><span class="co"># dataname &lt;- paste0("DataBlock_", 1:length(datablock))</span></span>
-<span><span class="co"># plots &lt;- DJIVEAngleDiagnosticJP(datablock, dataname, divasRes, 566, "GNP Demo")</span></span></code></pre></div>
+<span><span class="co"># plots &lt;- DJIVEAngleDiagnosticJP(datablock, dataname, divasRes, 566, "GNP Demo")</span></span>
+<span><span class="co"># plots$rank</span></span>
+<span><span class="co"># plots$score</span></span>
+<span><span class="co"># plots$loading</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -487,7 +511,7 @@ granulopoiesis atlas project (3,4).</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

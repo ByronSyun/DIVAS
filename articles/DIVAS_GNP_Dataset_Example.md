@@ -27,6 +27,7 @@ represents a different “view” of the same biological samples.
 To run this example, you’ll need the `qs` package:
 
 ``` r
+
 # install.packages("qs")
 # library(qs)
 ```
@@ -34,6 +35,7 @@ To run this example, you’ll need the `qs` package:
 ### Loading and Analyzing the GNP Dataset
 
 ``` r
+
 # library(qs)
 # gnp_data_path <- system.file("extdata", "gnp_imputed.qs", package = "DIVAS") 
 # gnp <- qs::qread(gnp_data_path)
