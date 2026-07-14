@@ -11,11 +11,11 @@ and other complex data types.
 
 Useful links:
 
-- <https://github.com/ByronSyun/DIVAS_Develop>
+- <https://github.com/ByronSyun/DIVAS>
 
-- <https://byronsyun.github.io/DIVAS_Develop/>
+- <https://byronsyun.github.io/DIVAS/>
 
-- Report bugs at <https://github.com/ByronSyun/DIVAS_Develop/issues>
+- Report bugs at <https://github.com/ByronSyun/DIVAS/issues>
 
 ## Author
 

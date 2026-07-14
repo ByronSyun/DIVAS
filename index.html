@@ -19,7 +19,7 @@
 <meta property="og:title" content="Data Integration via Analysis of Subspaces">
 <meta name="description" content="Based on Data integration via analysis of subspaces (DIVAS) by Prothero et al. (2024), this is a package that implements the DIVAS methodology for multi-modal data integration. This package provides tools for signal extraction, noise estimation and joint structure identification from high-dimensional datasets, useful for multi-omics and other complex data types.">
 <meta property="og:description" content="Based on Data integration via analysis of subspaces (DIVAS) by Prothero et al. (2024), this is a package that implements the DIVAS methodology for multi-modal data integration. This package provides tools for signal extraction, noise estimation and joint structure identification from high-dimensional datasets, useful for multi-omics and other complex data types.">
-<meta property="og:image" content="https://byronsyun.github.io/DIVAS_Develop/logo.png">
+<meta property="og:image" content="https://byronsyun.github.io/DIVAS/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -49,7 +49,7 @@
 </li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ByronSyun/DIVAS_Develop" aria-label="GitHub"><span class="fa fab fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ByronSyun/DIVAS" aria-label="GitHub"><span class="fa fab fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -70,7 +70,7 @@
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>We provide an R implementation of DIVAS (Prothero et al., 2024), a statistical method for multi-modal data integration. Via statistical analysis of subspaces, DIVAS identifies joint, partially shared, and individual variation across multiple data blocks in a completely data-driven way. In addition to translating the original MATLAB implementation into an accessible R package, we also provide visualization tools and worked examples for exploring DIVAS results in practice.</p>
-<p><strong>Documentation website</strong>: <a href="https://byronsyun.github.io/DIVAS_Develop/">https://byronsyun.github.io/DIVAS_Develop/</a></p>
+<p><strong>Documentation website</strong>: <a href="https://byronsyun.github.io/DIVAS/">https://byronsyun.github.io/DIVAS/</a></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -96,7 +96,7 @@
 <p>You can install the development version of DIVAS from GitHub using <code>devtools</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install DIVAS package from the main branch on GitHub</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ByronSyun/DIVAS_Develop/pkg"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ByronSyun/DIVAS/pkg"</span>, ref <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Or install from a local folder if you have cloned the repository</span></span>
 <span><span class="co"># devtools::install("path/to/DIVAS-main/pkg")</span></span></code></pre></div>
@@ -108,7 +108,7 @@
 <p>The DIVAS package supports analysis of various data formats. Here is a simple example using the built-in toy MATLAB dataset:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/HenrikBengtsson/R.matlab" class="external-link">R.matlab</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ByronSyun/DIVAS_Develop" class="external-link">DIVAS</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ByronSyun/DIVAS" class="external-link">DIVAS</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"toyDataThreeWay.mat"</span>, package <span class="op">=</span> <span class="st">"DIVAS"</span><span class="op">)</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/R.matlab/man/readMat.html" class="external-link">readMat</a></span><span class="op">(</span><span class="va">data_path</span><span class="op">)</span></span>
@@ -148,21 +148,21 @@
 <tr>
 <td>toyDataThreeWay.mat</td>
 <td>Synthetic 3-block data with known joint structures</td>
-<td><a href="https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_Toy_Dataset_Example.html">Toy Dataset Example</a></td>
+<td><a href="https://byronsyun.github.io/DIVAS/articles/DIVAS_Toy_Dataset_Example.html">Toy Dataset Example</a></td>
 <td>.mat</td>
 <td>Prothero et al. (2024)</td>
 </tr>
 <tr>
 <td>gnp_imputed.qs</td>
 <td>GNP economic time series data</td>
-<td><a href="https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_GNP_Dataset_Example.html">GNP Dataset Example</a></td>
+<td><a href="https://byronsyun.github.io/DIVAS/articles/DIVAS_GNP_Dataset_Example.html">GNP Dataset Example</a></td>
 <td>.qs</td>
 <td>Stock &amp; Watson (2016)</td>
 </tr>
 <tr>
 <td>COVID-19 Multi-Omics</td>
 <td>6-block integration: scRNA-seq (4 cell types), proteomics, metabolomics from 114 COVID-19 patient samples</td>
-<td><a href="https://byronsyun.github.io/DIVAS_COVID19_CaseStudy/" class="external-link">COVID Case Study</a></td>
+<td><a href="https://byronsyun.github.io/DIVAS_COVID19_CaseStudy/">COVID Case Study</a></td>
 <td>.rds</td>
 <td>Su et al. (2020)</td>
 </tr>
@@ -202,8 +202,8 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ByronSyun/DIVAS_Develop/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/ByronSyun/DIVAS_Develop/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/ByronSyun/DIVAS/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/ByronSyun/DIVAS/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -234,7 +234,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ByronSyun/DIVAS_Develop/actions" class="external-link"><img src="https://github.com/ByronSyun/DIVAS_Develop/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/ByronSyun/DIVAS/actions" class="external-link"><img src="https://github.com/ByronSyun/DIVAS/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 

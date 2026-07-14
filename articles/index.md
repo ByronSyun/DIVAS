@@ -3,8 +3,8 @@
 ### All vignettes
 
 - [DIVAS Vignette: GNP Dataset
-  Example](https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_GNP_Dataset_Example.md):
+  Example](https://byronsyun.github.io/DIVAS/articles/DIVAS_GNP_Dataset_Example.md):
 - [DIVAS Vignette: Toy Dataset
-  Example](https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_Toy_Dataset_Example.md):
+  Example](https://byronsyun.github.io/DIVAS/articles/DIVAS_Toy_Dataset_Example.md):
 - [DIVAS User Guide: Analysing the Toy
-  Dataset](https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_User_Guide.md):
+  Dataset](https://byronsyun.github.io/DIVAS/articles/DIVAS_User_Guide.md):

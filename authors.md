@@ -10,16 +10,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/ByronSyun/DIVAS_Develop/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/ByronSyun/DIVAS/blob/main/DESCRIPTION)
 
 Mao J, Sun Y (2026). *DIVAS: Data Integration via Analysis of
 Subspaces*. R package version 0.1.1,
-<https://github.com/ByronSyun/DIVAS_Develop>.
+<https://github.com/ByronSyun/DIVAS>.
 
     @Manual{,
       title = {DIVAS: Data Integration via Analysis of Subspaces},
       author = {Jiadong Mao and Yinuo Sun},
       year = {2026},
       note = {R package version 0.1.1},
-      url = {https://github.com/ByronSyun/DIVAS_Develop},
+      url = {https://github.com/ByronSyun/DIVAS},
     }

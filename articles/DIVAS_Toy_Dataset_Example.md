@@ -18,7 +18,7 @@ vignette follows the current 1.x `CVXR` line (tested with `CVXR`
 # install.packages("devtools")
 
 # Install DIVAS package from GitHub
-# devtools::install_github("ByronSyun/DIVAS_Develop", ref = "DIVAS-v1")
+# devtools::install_github("ByronSyun/DIVAS/pkg", ref = "main")
 
 # Or install from local folder
 # devtools::load_all("DIVAS-main") 
@@ -109,7 +109,7 @@ blocks to it.
 ## DIVAS Analysis Process and Results Interpretation
 
 The DIVAS analysis performed by
-[`DIVASmain()`](https://byronsyun.github.io/DIVAS_Develop/reference/DIVASmain.md)
+[`DIVASmain()`](https://byronsyun.github.io/DIVAS/reference/DIVASmain.md)
 consists of three main steps.
 
 For this toy dataset, we keep `rowCent = FALSE` (default). The toy
@@ -123,7 +123,7 @@ baselines and focus on between-sample variation.
 
 The first step extracts the signal component from each data block by
 separating it from noise. When you run
-[`DIVASmain()`](https://byronsyun.github.io/DIVAS_Develop/reference/DIVASmain.md),
+[`DIVASmain()`](https://byronsyun.github.io/DIVAS/reference/DIVASmain.md),
 you’ll see output similar to:
 
     Signal estimation for X1
@@ -376,7 +376,7 @@ expressed in the original feature space of each data block.
 1.  Prothero, J., …, Marron J. S. (2024). Data integration via analysis
     of subspaces (DIVAS).
 
-2.  DIVAS R package. <https://github.com/ByronSyun/DIVAS_Develop>.
+2.  DIVAS R package. <https://github.com/ByronSyun/DIVAS>.
 
 3.  Klein, C., Hesse, S., Mao, J., Hadziahmetovic, A., et al. (2025). A
     molecular atlas of human granulopoiesis.

@@ -18,7 +18,7 @@ especially regarding the required `CVXR` 1.x line (tested with `CVXR`
 # install.packages("devtools")
 
 # Install DIVAS package from GitHub
-# devtools::install_github("ByronSyun/DIVAS_Develop", ref = "DIVAS-v1")
+# devtools::install_github("ByronSyun/DIVAS/pkg", ref = "main")
 
 # Or install from local folder
 # devtools::load_all("DIVAS-main")
@@ -94,7 +94,7 @@ cell-type-specific pseudo-bulk expression matrices.
 
 The core function is `DIVASmain`. We pass our prepared list of data
 blocks to it. Preparing aligned data blocks and running
-[`DIVASmain()`](https://byronsyun.github.io/DIVAS_Develop/reference/DIVASmain.md)
+[`DIVASmain()`](https://byronsyun.github.io/DIVAS/reference/DIVASmain.md)
 are the required steps; dataset-specific preprocessing choices such as
 cell annotation, pseudo-bulking or feature filtering depend on the study
 design.
@@ -112,14 +112,14 @@ design.
 ## DIVAS Analysis Process and Results Interpretation
 
 The DIVAS analysis performed by
-[`DIVASmain()`](https://byronsyun.github.io/DIVAS_Develop/reference/DIVASmain.md)
+[`DIVASmain()`](https://byronsyun.github.io/DIVAS/reference/DIVASmain.md)
 consists of three main steps:
 
 ### Step 1: Signal Extraction
 
 The first step extracts the signal component from each data block by
 separating it from noise. When you run
-[`DIVASmain()`](https://byronsyun.github.io/DIVAS_Develop/reference/DIVASmain.md),
+[`DIVASmain()`](https://byronsyun.github.io/DIVAS/reference/DIVASmain.md),
 you’ll see output similar to:
 
     Signal estimation for X1
@@ -283,7 +283,7 @@ next Section):
 The DIVAS analysis generates standardized diagnostic plots that provide
 critical insights into the identified structures. These plots are
 created by the package built-in function
-[`DJIVEAngleDiagnosticJP()`](https://byronsyun.github.io/DIVAS_Develop/reference/DJIVEAngleDiagnosticJP.md),
+[`DJIVEAngleDiagnosticJP()`](https://byronsyun.github.io/DIVAS/reference/DJIVEAngleDiagnosticJP.md),
 which returns editable `ggplot2` objects.
 
 ### 1. Rank Decomposition Diagnostics
