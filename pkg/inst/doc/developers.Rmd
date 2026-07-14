@@ -39,4 +39,4 @@ knitr::opts_chunk$set(
 
 ## Join the Team
 
-We're always looking for contributors who can help improve the DIVAS package. If you're interested in contributing, check out our [contributing guidelines](contributing.html) or [get in touch with the team](https://github.com/ByronSyun/DIVAS_Develop/issues). 
+We're always looking for contributors who can help improve the DIVAS package. If you're interested in contributing, check out our [contributing guidelines](contributing.html) or [get in touch with the team](https://github.com/ByronSyun/DIVAS/issues). 

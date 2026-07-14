@@ -13,9 +13,9 @@ Based on 'Data integration via analysis of subspaces (DIVAS)' by Prothero et al.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ByronSyun/DIVAS_Develop}
-  \item \url{https://byronsyun.github.io/DIVAS_Develop/}
-  \item Report bugs at \url{https://github.com/ByronSyun/DIVAS_Develop/issues}
+  \item \url{https://github.com/ByronSyun/DIVAS}
+  \item \url{https://byronsyun.github.io/DIVAS/}
+  \item Report bugs at \url{https://github.com/ByronSyun/DIVAS/issues}
 }
 
 }

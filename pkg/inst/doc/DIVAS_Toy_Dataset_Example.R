@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 # # install.packages("devtools")
 # 
 # # Install DIVAS package from GitHub
-# # devtools::install_github("ByronSyun/DIVAS_Develop", ref = "DIVAS-v1")
+# # devtools::install_github("ByronSyun/DIVAS/pkg", ref = "main")
 # 
 # # Or install from local folder
 # # devtools::load_all("DIVAS-main")

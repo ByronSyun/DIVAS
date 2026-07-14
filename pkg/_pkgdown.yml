@@ -1,4 +1,4 @@
-url: https://byronsyun.github.io/DIVAS_Develop/ # You can update this later to your site's live URL
+url: https://byronsyun.github.io/DIVAS/
 template:
   bootstrap: 5
   bootswatch: flatly
@@ -26,7 +26,7 @@ navbar:
         href: articles/DIVAS_GNP_Dataset_Example.html
     github:
       icon: fab fa-github
-      href: https://github.com/ByronSyun/DIVAS_Develop 
+      href: https://github.com/ByronSyun/DIVAS
       aria-label: "GitHub"
       
 home:

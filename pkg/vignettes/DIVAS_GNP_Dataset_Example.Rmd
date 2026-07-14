@@ -60,7 +60,7 @@ To run this example, you'll need the `qs` package:
 
 1.  Prothero, J., …, Marron J. S. (2024). Data integration via analysis of subspaces (DIVAS).
 
-2.  DIVAS R package. <https://github.com/ByronSyun/DIVAS_Develop>.
+2.  DIVAS R package. <https://github.com/ByronSyun/DIVAS>.
 
 3.  Klein, C., Hesse, S., Mao, J., Hadziahmetovic, A., et al. (2025). A molecular atlas of human granulopoiesis. <https://www.researchsquare.com/article/rs-6184761/v1>
 

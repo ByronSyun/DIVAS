@@ -1,7 +1,7 @@
 # DIVAS: Data Integration via Analysis of Subspaces
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ByronSyun/DIVAS_Develop/workflows/R-CMD-check/badge.svg)](https://github.com/ByronSyun/DIVAS_Develop/actions)
+[![R-CMD-check](https://github.com/ByronSyun/DIVAS/workflows/R-CMD-check/badge.svg)](https://github.com/ByronSyun/DIVAS/actions)
 <!-- badges: end -->
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 We provide an R implementation of DIVAS (Prothero et al., 2024), a statistical method for multi-modal data integration. Via statistical analysis of subspaces, DIVAS identifies joint, partially shared, and individual variation across multiple data blocks in a completely data-driven way. In addition to translating the original MATLAB implementation into an accessible R package, we also provide visualization tools and worked examples for exploring DIVAS results in practice.
 
-**Documentation website**: [https://byronsyun.github.io/DIVAS_Develop/](https://byronsyun.github.io/DIVAS_Develop/)
+**Documentation website**: [https://byronsyun.github.io/DIVAS/](https://byronsyun.github.io/DIVAS/)
 
 ## Installation
 
@@ -38,7 +38,7 @@ You can install the development version of DIVAS from GitHub using `devtools`:
 
 ```R
 # Install DIVAS package from the main branch on GitHub
-devtools::install_github("ByronSyun/DIVAS_Develop/pkg", ref = "main")
+devtools::install_github("ByronSyun/DIVAS/pkg", ref = "main")
 
 # Or install from a local folder if you have cloned the repository
 # devtools::install("path/to/DIVAS-main/pkg")
@@ -75,8 +75,8 @@ We provide the following examples to illustrate the use of DIVAS in different sc
 
 | Dataset             | Brief Description                                  | Vignette Link                                                                                              | Format | Primary Reference      |
 |---------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------|--------|------------------------|
-| toyDataThreeWay.mat | Synthetic 3-block data with known joint structures | [Toy Dataset Example](https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_Toy_Dataset_Example.html) | .mat   | Prothero et al. (2024) |
-| gnp_imputed.qs      | GNP economic time series data                      | [GNP Dataset Example](https://byronsyun.github.io/DIVAS_Develop/articles/DIVAS_GNP_Dataset_Example.html) | .qs    | Stock & Watson (2016)  |
+| toyDataThreeWay.mat | Synthetic 3-block data with known joint structures | [Toy Dataset Example](https://byronsyun.github.io/DIVAS/articles/DIVAS_Toy_Dataset_Example.html) | .mat   | Prothero et al. (2024) |
+| gnp_imputed.qs      | GNP economic time series data                      | [GNP Dataset Example](https://byronsyun.github.io/DIVAS/articles/DIVAS_GNP_Dataset_Example.html) | .qs    | Stock & Watson (2016)  |
 | COVID-19 Multi-Omics | 6-block integration: scRNA-seq (4 cell types), proteomics, metabolomics from 114 COVID-19 patient samples | [COVID Case Study](https://byronsyun.github.io/DIVAS_COVID19_CaseStudy/) | .rds   | Su et al. (2020) |
 
 ## Case Study: COVID-19 Multi-Omics Analysis

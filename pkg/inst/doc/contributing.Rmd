@@ -20,7 +20,7 @@ Thank you for your interest in contributing to the DIVAS package! This document 
 
 There are several ways you can contribute to the DIVAS project:
 
-1. **Report bugs**: If you find a bug, please report it by [creating an issue](https://github.com/ByronSyun/DIVAS_Develop/issues) on our GitHub repository.
+1. **Report bugs**: If you find a bug, please report it by [creating an issue](https://github.com/ByronSyun/DIVAS/issues) on our GitHub repository.
 
 2. **Suggest features**: Have an idea for a new feature? Share it by creating an issue labeled as "feature request."
 
@@ -99,7 +99,7 @@ When you're ready to submit your changes:
    git push origin feature/your-feature-name
    ```
 
-2. Go to the [DIVAS repository](https://github.com/ByronSyun/DIVAS_Develop) and create a pull request.
+2. Go to the [DIVAS repository](https://github.com/ByronSyun/DIVAS) and create a pull request.
 
 3. Include a clear title and description of your changes.
 
@@ -111,4 +111,4 @@ Please note that the DIVAS project is released with a [Contributor Code of Condu
 
 ## Questions?
 
-If you have any questions about contributing, please [open an issue](https://github.com/ByronSyun/DIVAS_Develop/issues) and we'll be happy to help! 
+If you have any questions about contributing, please [open an issue](https://github.com/ByronSyun/DIVAS/issues) and we'll be happy to help! 
