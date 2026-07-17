@@ -85,6 +85,14 @@ This project serves as a comprehensive, real-world application of the DIVAS pack
 
 **➡️ [View the full analysis on GitHub](https://github.com/ByronSyun/DIVAS_COVID19_CaseStudy)**
 
+## Citation
+
+If you use DIVAS, please cite the manuscript:
+
+Sun, Y., Marron, J. S., Lê Cao, K.-A., & Mao, J. (2026). DIVAS: an R package for identifying shared and individual variations of multiomics data. bioRxiv, 2026.01.12.698985. https://doi.org/10.64898/2026.01.12.698985
+
+The package citation is also available in R with `citation("DIVAS")` and on the [Authors and Citation](https://byronsyun.github.io/DIVAS/authors.html#citation) page.
+
 ## Developers
 
 * **[Jiadong Mao](https://github.com/jiadongm)** - *Lead Developer, Maintainer*
