@@ -100,7 +100,7 @@ The package citation is also available in R with `citation("DIVAS")` and on the 
 
 ## References
 
-Prothero, J., et al. (2024). Data integration via analysis of subspaces (DIVAS).
+Prothero, J., et al. (2024). Data integration via analysis of subspaces (DIVAS). TEST.
 
 Su, Y., Chen, D., Yuan, D., et al. (2020). Multi-Omics Resolves a Sharp Disease-State Shift between Mild and Moderate COVID-19. Cell, 183(6), 1479-1495. https://doi.org/10.1016/j.cell.2020.10.037
 
