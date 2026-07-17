@@ -10,6 +10,7 @@
 
 - Expanded README and user-facing documentation links for installation, examples, and case-study resources.
 - Maintained pkgdown reference index and vignettes for package functions and worked examples.
+- Added package citation metadata for the DIVAS bioRxiv preprint and package release.
 
 # DIVAS 0.1.0
 

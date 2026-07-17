@@ -1,0 +1,28 @@
+bibentry(
+  bibtype = "Article",
+  title = "DIVAS: an R package for identifying shared and individual variations of multiomics data",
+  author = c(
+    person("Yinuo", "Sun"),
+    person("J. S.", "Marron"),
+    person("Kim-Anh", "L\\enc{\\^e}{e} Cao"),
+    person("Jiadong", "Mao")
+  ),
+  journal = "bioRxiv",
+  year = "2026",
+  pages = "2026.01.12.698985",
+  doi = "10.64898/2026.01.12.698985",
+  url = "https://www.biorxiv.org/content/10.64898/2026.01.12.698985v1",
+  note = "Preprint"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title = "DIVAS: Data Integration via Analysis of Subspaces",
+  author = c(
+    person("Jiadong", "Mao"),
+    person("Yinuo", "Sun")
+  ),
+  year = "2026",
+  note = "R package version 0.1.1",
+  url = "https://github.com/ByronSyun/DIVAS"
+)
